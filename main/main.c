@@ -436,63 +436,6 @@ void app_main(void) {
 
         vTaskDelay(pdMS_TO_TICKS(20));
     }
-
-    // while (1) {
-    //     if (fruits_is_touching()) {
-    //         int touched_fruit_index = fruits_active_index();
-
-    //         ESP_LOGI(TAG, "Fruits are touched! Touched fruit is %s. Touch
-    //         power: %d",
-    //                  fruits_name(touched_fruit_index), fruits_read_pot());
-    //     }
-
-    //     vTaskDelay(pdMS_TO_TICKS(2000));
-    // }
-
-    // ESP_ERROR_CHECK(touch_pad_init());
-
-    //   // Configure GPIO4 as touch pad (T4)
-    //   ESP_ERROR_CHECK(touch_pad_config(TOUCH_PAD_NUM4));
-
-    //   // Start FSM (hardware measurements)
-    //   ESP_ERROR_CHECK(
-    //       touch_pad_set_fsm_mode(TOUCH_FSM_MODE_TIMER)
-    //   );
-
-    //   ESP_ERROR_CHECK(touch_pad_fsm_start());
-
-    //   uint32_t touch_value;
-
-    //   while (1) {
-    //       ESP_ERROR_CHECK(
-    //           touch_pad_read_raw_data(
-    //               TOUCH_PAD_NUM4,
-    //               &touch_value
-    //           )
-    //       );
-
-    //       ESP_LOGI(TAG, "Touch value: %lu", touch_value);
-
-    //       vTaskDelay(pdMS_TO_TICKS(200));
-    //   }
-    // buzzer_pwm_init(BUZZER_GPIO);
-
-    // buzzer_set_volume(0.5);
-    //         buzzer_set_pitch(100);
-    // vTaskDelay(pdMS_TO_TICKS(150));
-    //   while (1) {
-    //      buzzer_set_volume(0.5);
-    //         buzzer_set_pitch(800);
-    // vTaskDelay(pdMS_TO_TICKS(150));
-    // for (int i = 0; i < 4; i++) {
-    //     buzzer_set_pitch(400);
-    //     vTaskDelay(pdMS_TO_TICKS(150));
-    //     buzzer_set_pitch(800);
-    //     vTaskDelay(pdMS_TO_TICKS(150));
-    // }
-
-    // buzzer_set_volume(0);
-    // }
 }
 
 /*
