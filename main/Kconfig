@@ -12,8 +12,15 @@ menu "espScope Configuration"
             GPIO pin number to hold low on boot to erase NVS (Factory Reset).
             Default is 9 (BOOT button on Seeed XIAO ESP32C6).
 
+    config BOARD_SPECIFIC_INIT_ENABLE
+        bool "Use a board-specific initialization file"
+        default n
+        help
+            Enable this if your board requires custom init code in a separate header.
+
     config BOARD_SPECIFIC_INIT
         string "Name of file containing any board specfic initialisation"
+        depends on BOARD_SPECIFIC_INIT_ENABLE
         help
             If your board requires some specific initialization C code, place it in
             a file called "./boards/<your board name>.h" and set this to "./boards/your board name.h"
