@@ -5,6 +5,8 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 
+#define BUTTON_POLLING_INTERVAL_MS 30
+
 static const char *TAG = "button";
 
 static int s_gpio_num = -1; 
@@ -21,7 +23,7 @@ static void button_task(void *arg){
                 ESP_LOGI(TAG, "Button pressed! Total count: %d", s_press_count);
             }
         }
-        vTaskDelay(pdMS_TO_TICKS(100)); // Check every 100ms
+        vTaskDelay(pdMS_TO_TICKS(BUTTON_POLLING_INTERVAL_MS));
     }
 }
 

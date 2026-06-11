@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef BUZZER_H
-#define BUZZER_H
+#ifndef LEDC_CONTROLLER_H
+#define LEDC_CONTROLLER_H
 
 #include<stdio.h>
 #include "driver/gpio.h"
@@ -10,10 +10,8 @@
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 
-void buzzer_pwm_init(int gpio);
+void pwm_init(int gpio);
 
-void buzzer_set_volume(float volume);
-
-void buzzer_set_pitch(int pitchHz);
+void set_rotation_speed_percent(float volume);
 
 #endif
