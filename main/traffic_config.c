@@ -1,5 +1,6 @@
 #include "traffic_config.h"
 
+
 static const traffic_phase_config_t state_configs[] = {
     [TRAFFIC_NS_RED_YELLOW] = {.duration_ms = 4000,
                                .lights_config = ((RED | YELLOW) << NS_LIGHTS_BASE) |

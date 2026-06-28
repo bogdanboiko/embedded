@@ -3,8 +3,8 @@
 #define TRAFFIC_CONFIG_H
 
 #include <stdio.h>
+ #include <stdint.h>
 #include "traffic_states.h"
-#include "traffic_config.h"
 
 /*
  lights configured with 8 bits(4 bits for ns, and 4 bits for ew)

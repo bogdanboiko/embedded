@@ -7,8 +7,6 @@
 #include "traffic_states.h"
 #include "traffic_config.h"
 
-void init_state();
-
 void proceed_to_next_state();
 
 traffic_state_t get_current_state();

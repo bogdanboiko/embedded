@@ -4,11 +4,12 @@
 
 TaskHandle_t blink_task_handler;
 
-volatile long blink_gpio_map = 0;
+volatile uint64_t blink_gpio_map = 0;
 
 void blink_task(void* args) {
     while (1) {
         vTaskDelay(pdMS_TO_TICKS(50));
+        
         if (blink_gpio_map != 0) {
             for (int n = 0; n < GPIO_NUM_MAX; n++) {
                 if (blink_gpio_map & (1u << n)) {
@@ -53,6 +54,7 @@ void set_traffic_state(traffic_light_t* config, uint8_t lights_config) {
       bool isGreenOn = lights_config & GREEN;
 
     if (isBlinking) {
+        // Lazy start blink task
         if (blink_task_handler == NULL) {
             xTaskCreate(blink_task, "BlinkTask", 1000, NULL, 4,
                         &blink_task_handler);
@@ -65,6 +67,7 @@ void set_traffic_state(traffic_light_t* config, uint8_t lights_config) {
         blink_gpio_map &= ~((1u << config->red_led_gpio) |
                           (1u << config->green_led_gpio) |
                           (1u << config->yellow_led_gpio));
+
         gpio_set_level(config->green_led_gpio, isGreenOn);
         gpio_set_level(config->yellow_led_gpio, isYellowOn);
         gpio_set_level(config->red_led_gpio, isRedOn);
