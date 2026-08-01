@@ -8,6 +8,7 @@
 
 #include "display/display_driver.h"
 #include "encoder/encoder_driver.h"
+#include "servo/servo_driver.h"
 
 // display
 #define I2C_SDA_PORT GPIO_NUM_15
@@ -18,11 +19,15 @@
 #define CN_B_GPIO GPIO_NUM_5
 #define CN_SW_GPIO GPIO_NUM_6
 
+// servo
+#define SERVO_PWM_GPIO GPIO_NUM_17
+
 static const char* TAG = "OLED display";
 
 void app_main(void) {
     config_encoder(CN_A_GPIO, CN_B_GPIO, CN_SW_GPIO);
     config_device_protocol(I2C_SDA_PORT, I2C_SCL_PORT);
+    config_servo_control(SERVO_PWM_GPIO);
     bool is_display_connected = troubleshoot_display_connection_success();
 
     ESP_LOGI(TAG, "Display connection status is %s!",
@@ -53,6 +58,7 @@ void app_main(void) {
         current_angle = get_current_angle();
 
         ESP_LOGI(TAG, "Interrup fired, new count value is: %d, angle is: %d", current_count, current_angle);
+        set_servo_angle(current_angle);
         vTaskDelay(pdMS_TO_TICKS(1000));
     }
 }
